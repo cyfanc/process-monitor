@@ -12,6 +12,7 @@ sh check_process.sh
 
 #添加监控进程
 配置文件conf/process.conf
+
 监控进程数量
 processcount=2
 进程编号=Y监控N不监控|进程名|启动进程
