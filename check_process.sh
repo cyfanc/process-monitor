@@ -7,11 +7,11 @@ ProcessNums=`cat $ConfFile |grep processcount |cut -d "=" -f2`
 while [ $i -le "$ProcessNums" ]
 do
     ProcessName=`grep "^process$i=[Y,N]|" "$ConfFile" | cut -d'=' -f2 |cut -d'|' -f2`
-    if [ "$ProcessName" != "" ]
+    if [ -n "$ProcessName" ]
     then
         echo "-------- $ProcessName ---------"
         ProcessState=`ps -e | grep "$ProcessName" |grep -v grep`
-        if [ "$ProcessState" == "" ]
+        if [ -z "$ProcessState" ]
         then
             ProcessOpt=`grep "^process$i=[Y,N]|" "$ConfFile" | cut -d'=' -f2 |cut -d'|' -f1`
             if [ "$ProcessOpt" = "Y" ]
