@@ -10,10 +10,10 @@ do
 	while [ $i -le "$ProcessNums" ]
 	do
 	    ProcessName=`grep "^process$i=Y|" "$ConfFile" | cut -d'=' -f2 |cut -d'|' -f2`
-	   	if [ "$ProcessName" != "" ]
+	   	if [ -n "$ProcessName" ]
 	   	then
 	   		ProcessState=`ps| grep "$ProcessName" |grep -v grep`
-	   		if [ "$ProcessState" == "" ]
+	   		if [ -z "$ProcessState" ]
 	   		then
 	   			ProcessRun=`grep "^process$i=Y|" "$ConfFile" | cut -d'|' -f3`
 	   			echo $ProcessRun run ...
